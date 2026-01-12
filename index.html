@@ -26,11 +26,15 @@
 
                 <div id="auth-buttons" style="display: contents;">
                     <!-- Content injected by app.js based on auth state -->
-                    <a href="login.html" class="btn btn-sm btn-primary auth-logged-out" style="margin-left:0.5rem; display:none;">Login</a>
-                    <a href="register.html" class="btn btn-sm btn-secondary auth-logged-out" style="margin-left:0.5rem; display:none;">Register</a>
-                    
-                    <a href="dashboard.html" class="btn btn-sm btn-primary auth-logged-in" style="margin-left:0.5rem; display:none;">Dashboard</a>
-                    <button id="logout-btn" class="btn btn-sm btn-secondary auth-logged-in" style="margin-left:0.5rem; display:none;">Logout</button>
+                    <a href="login.html" class="btn btn-sm btn-primary auth-logged-out"
+                        style="margin-left:0.5rem;">Login</a>
+                    <a href="register.html" class="btn btn-sm btn-secondary auth-logged-out"
+                        style="margin-left:0.5rem;">Register</a>
+
+                    <a href="dashboard.html" class="btn btn-sm btn-primary auth-logged-in"
+                        style="margin-left:0.5rem; display:none;">Dashboard</a>
+                    <button id="logout-btn" class="btn btn-sm btn-secondary auth-logged-in"
+                        style="margin-left:0.5rem; display:none;">Logout</button>
                 </div>
             </div>
         </div>
@@ -43,21 +47,27 @@
                     <div class="intro">
                         <h2>Manage Your Tasks & Notes</h2>
                         <h3>Stay organized and productive</h3>
-                        <p>Our easy-to-use system helps you manage your tasks and notes efficiently. Keep track of what needs to be done, add quick notes, and never miss a deadline again.</p>
-                        <p>Create your personal account, log in, add tasks or notes, mark tasks as completed, edit or delete them, and sync all your data into a secure database.</p>
+                        <p>Our easy-to-use system helps you manage your tasks and notes efficiently. Keep track of what
+                            needs to be done, add quick notes, and never miss a deadline again.</p>
+                        <p>Create your personal account, log in, add tasks or notes, mark tasks as completed, edit or
+                            delete them, and sync all your data into a secure database.</p>
                     </div>
                     <div class="buttons" id="main-auth-buttons">
-                         <!-- Content managed by app.js -->
-                         <a href="login.html" class="btn login auth-logged-out" aria-label="Go to login page" style="display:none;">Login</a>
-                         <a href="register.html" class="btn register auth-logged-out" aria-label="Go to registration page" style="display:none;">Register</a>
-                         
-                         <a href="dashboard.html" class="btn login auth-logged-in" aria-label="Go to dashboard" style="display:none;">Go to Dashboard</a>
-                         <button id="logout-btn-main" class="btn register auth-logged-in" aria-label="Logout" style="display:none;">Logout</button>
+                        <!-- Content managed by app.js -->
+                        <a href="login.html" class="btn login auth-logged-out" aria-label="Go to login page">Login</a>
+                        <a href="register.html" class="btn register auth-logged-out"
+                            aria-label="Go to registration page">Register</a>
+
+                        <a href="dashboard.html" class="btn login auth-logged-in" aria-label="Go to dashboard"
+                            style="display:none;">Go to Dashboard</a>
+                        <button id="logout-btn-main" class="btn register auth-logged-in" aria-label="Logout"
+                            style="display:none;">Logout</button>
                     </div>
                 </div>
             </div>
             <div class="right" role="img" aria-label="To-do list illustration">
-                <img src="landing_productivity.png" alt="To-do list illustration showing task management" style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.3);">
+                <img src="landing_productivity.png" alt="To-do list illustration showing task management"
+                    style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.3);">
             </div>
         </div>
     </main>
@@ -65,8 +75,10 @@
     <!-- bottom section moved out of left column -->
     <div class="buttom reveal" aria-labelledby="social-proof-heading">
         <div class="social-proof-inner">
-            <h3 id="social-proof-heading" style="color:#0d6efd; margin-bottom:0.5rem;">Why people love To‑Do & Notes Manager</h3>
-            <p style="color:#495057; margin-bottom:1rem;">Trusted by thousands to stay productive — average users report finishing more tasks and saving time every week.</p>
+            <h3 id="social-proof-heading" style="color:#0d6efd; margin-bottom:0.5rem;">Why people love To‑Do & Notes
+                Manager</h3>
+            <p style="color:#495057; margin-bottom:1rem;">Trusted by thousands to stay productive — average users report
+                finishing more tasks and saving time every week.</p>
 
             <div class="stats-grid" style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
                 <div class="stats-card">
@@ -88,7 +100,8 @@
             </div>
 
             <div class="testimonials" style="display:flex; gap:1rem; flex-direction:column;">
-                <blockquote>“Best productivity boost I've found — I get more done in less time.” — A. Morgan</blockquote>
+                <blockquote>“Best productivity boost I've found — I get more done in less time.” — A. Morgan
+                </blockquote>
                 <blockquote>“Simple, fast, and reliable. Perfect for personal and work tasks.” — J. Patel</blockquote>
             </div>
         </div>
@@ -100,7 +113,7 @@
 
     <script>
         // reveal on scroll for elements with .reveal
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const options = {
                 root: null,
                 rootMargin: '0px',
@@ -117,7 +130,7 @@
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         });
     </script>
-    
+
     <!-- Firebase App (the core Firebase SDK) -->
     <script type="module" src="firebase-config.js"></script>
     <script type="module" src="app.js"></script>
