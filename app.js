@@ -42,36 +42,42 @@ const profileImageForm = document.getElementById('imageUploadForm');
 const profileForm = document.getElementById('profileForm');
 
 // Auth State Observer
-onAuthStateChanged(auth, async (user) => {
-    if (user) {
-        // User is signed in
-        console.log("User signed in:", user.uid);
-        updateUIForAuth(true);
-        updateUserNameDisplay(user);
+// Auth State Observer
+try {
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            // User is signed in
+            console.log("User signed in:", user.uid);
+            updateUIForAuth(true);
+            updateUserNameDisplay(user);
 
-        // Setup listeners based on current page
-        setupDashboardListeners(user);
-        setupTaskHistoryListeners(user);
-        setupProfileListeners(user);
+            // Setup listeners based on current page
+            setupDashboardListeners(user);
+            setupTaskHistoryListeners(user);
+            setupProfileListeners(user);
 
-        // Redirect from auth pages
-        if (window.location.pathname.includes('login.html') || window.location.pathname.includes('register.html')) {
-            window.location.href = 'dashboard.html';
+            // Redirect from auth pages
+            if (window.location.pathname.includes('login.html') || window.location.pathname.includes('register.html')) {
+                window.location.href = 'dashboard.html';
+            }
+
+        } else {
+            // User is signed out
+            console.log("User signed out");
+            updateUIForAuth(false);
+
+            // Redirect protected pages
+            if (window.location.pathname.includes('dashboard.html') ||
+                window.location.pathname.includes('profile.html') ||
+                window.location.pathname.includes('task_history.html')) {
+                window.location.href = 'login.html';
+            }
         }
-
-    } else {
-        // User is signed out
-        console.log("User signed out");
-        updateUIForAuth(false);
-
-        // Redirect protected pages
-        if (window.location.pathname.includes('dashboard.html') ||
-            window.location.pathname.includes('profile.html') ||
-            window.location.pathname.includes('task_history.html')) {
-            window.location.href = 'login.html';
-        }
-    }
-});
+    });
+} catch (error) {
+    console.error("Firebase init error:", error);
+    // UI remains in default (logged-out) state
+}
 
 function updateUserNameDisplay(user) {
     if (userNameDisplay) {
