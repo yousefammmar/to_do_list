@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Task & Notes Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Removed React CDN, using Vanilla JS via app.js -->
+</head>
+
+<body>
+    <div class="background-particles">
+        <div class="particle p1"></div>
+        <div class="particle p2"></div>
+        <div class="particle p3"></div>
+        <div class="particle p4"></div>
+        <div class="particle p5"></div>
+        <div class="particle p6"></div>
+    </div>
+    <header>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <h1 style="margin: 0; flex: 1;">Welcome, <span id="user-name-display">User</span>!</h1>
+            <a href="about.html" class="btn btn-secondary" style="margin-left: auto; margin-right: 0.5rem;"
+                aria-label="About our team">About Us</a>
+        </div>
+        <nav>
+            <a href="index.html" class="btn btn-primary" aria-label="Go to homepage">Home</a>
+            <a href="task_history.html" class="btn btn-info" aria-label="View task history">Task History</a>
+            <a href="profile.html" class="btn btn-warning" aria-label="Go to profile settings">Profile</a>
+            <button id="logout-btn-dashboard" class="btn btn-danger"
+                aria-label="Logout from your account">Logout</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container dashboard-container">
+            <!-- Tasks Manager Section -->
+            <section class="tasks-section">
+                <h2>Tasks Manager</h2>
+                <p>Manage your tasks. Only tasks that are not completed are shown here.</p>
+
+                <!-- Add Task Form -->
+                <form id="addTaskForm" class="task-form">
+                    <input type="text" id="taskInput" placeholder="Enter task..." required aria-label="Enter new task">
+                    <button type="submit" class="btn btn-primary" aria-label="Add new task">Add Task</button>
+                </form>
+
+                <!-- Vanilla JS Task List Container -->
+                <ul class="task-list" id="taskList">
+                    <!-- Tasks injected by app.js -->
+                    <li class="placeholder">Loading tasks...</li>
+                </ul>
+            </section>
+
+            <!-- Notes Manager Section -->
+            <section class="notes-section">
+                <h2>Notes Manager</h2>
+                <p>Add and manage your notes.</p>
+
+                <!-- Add Note Form -->
+                <form id="addNoteForm" class="note-form">
+                    <input type="text" id="noteInput" placeholder="Write a short note..." required
+                        aria-label="Enter new note">
+                    <button type="submit" class="btn btn-primary" aria-label="Add new note">Add Note</button>
+                </form>
+
+                <!-- Notes List -->
+                <ul class="notes-list" id="notesList">
+                    <!-- Notes injected by app.js -->
+                    <li class="placeholder">Loading notes...</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 To-Do & Notes Manager. All rights reserved.</p>
+    </footer>
+
+    <!-- Firebase Configuration and App Logic -->
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>

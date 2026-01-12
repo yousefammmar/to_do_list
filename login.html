@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-particles">
+        <div class="particle p1"></div>
+        <div class="particle p2"></div>
+        <div class="particle p3"></div>
+        <div class="particle p4"></div>
+        <div class="particle p5"></div>
+        <div class="particle p6"></div>
+    </div>
+    <header>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <h1 style="margin: 0; flex: 1;">Login to Your Account</h1>
+            <a href="about.html" class="btn btn-secondary" style="margin-left: auto;" aria-label="About our team">About
+                Us</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="form-container-in">
+                <h2>Login</h2>
+                <form id="login-form">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required aria-required="true"
+                            aria-label="Enter your email address">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required
+                            aria-required="true" aria-label="Enter your password">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100" aria-label="Submit login form">Login</button>
+                    <!-- Loading indicator -->
+                    <div id="loading-indicator" style="display:none; text-align:center; margin-top:10px;">Logging in...
+                    </div>
+                </form>
+                <p class="mt-3 text-center">Don't have an account? <a href="register.html">Register here</a></p>
+
+                <div id="auth-error-message" class="alert alert-danger mt-3" role="alert" style="display:none;"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 To-Do & Notes Manager. All rights reserved.</p>
+    </footer>
+
+    <!-- Firebase Configuration and App Logic -->
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>

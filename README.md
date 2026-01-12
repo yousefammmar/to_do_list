@@ -1,46 +1,74 @@
-# To-Do List Project
+# To-Do & Notes Manager (GitHub Ready Version)
 
-This is a PHP-based To-Do List application.
+This is a static version of the To-Do & Notes Manager, ready for hosting on GitHub Pages or any static site provider. It uses Firebase for authentication and data storage, allowing you to access your data from any device (laptop, phone, etc.).
 
-## 🚀 Getting Started
+## Setup Instructions
 
-To test or run this project on your local machine, follow these steps:
+### 1. Create a Firebase Project
+1. Go to [Firebase Console](https://console.firebase.google.com/).
+2. Click **Add project** and follow the setup.
+3. Once created, go to **Build** > **Authentication**.
+   - Click **Get Started**.
+   - Enable **Email/Password** provider.
+4. Go to **Build** > **Firestore Database**.
+   - Click **Create Database**.
+   - Start in **Test mode** (for development) or **Production mode** (you'll need to configure rules).
+   - Choose a location close to you.
+   - Go to **Rules** tab and allow read/write:
+     ```
+     rules_version = '2';
+     service cloud.firestore {
+       match /databases/{database}/documents {
+         match /{document=**} {
+           allow read, write: if request.auth != null;
+         }
+       }
+     }
+     ```
+     (Note: This rule allows any logged-in user to read/write any data. For better security, restrict to `request.auth.uid == resource.data.userId` for creating/updating.)
+5. Go to **Build** > **Storage**.
+   - Click **Get Started**.
+   - Start in **Test mode** or **Production mode**.
+   - Configure Rules similarly (allow read/write for authenticated users).
 
-### Prerequisites
-*   A local server environment like **XAMPP**, **WAMP**, or **MAMP**.
-*   **PHP** 7.2 or higher.
-*   **MySQL** Database.
+### 2. Get Configuration
+1. In Firebase Console, click the **Gear icon** > **Project settings**.
+2. Scroll down to **Your apps**.
+3. Click the **Web** icon (`</>`).
+4. Register app (e.g., "Todo App").
+5. Copy the `firebaseConfig` object provided.
 
-### Installation
+### 3. Update Configuration
+1. Open `firebase-config.js` in this folder.
+2. Replace the placeholder values in `const firebaseConfig = { ... }` with your actual configuration from step 2.
 
-1.  **Clone or Download** this repository.
-2.  **Move the project folder** to your server's root directory (e.g., `htdocs` in XAMPP or `www` in WAMP).
-3.  **Database Setup**:
-    *   Open your database management tool (e.g., **phpMyAdmin**).
-    *   Create a new database named `tst` (or allow the code to use another name by updating `database.php`).
-    *   Import the provided SQL file: `todo_list.sql`.
-4.  **Configuration**:
-    *   Open `database.php`.
-    *   Ensure the `$user`, `$pass`, and `$dbname` variables match your local database configuration.
-    
-    ```php
-    // Default configuration in database.php
-    $host = "localhost";
-    $user = "root";
-    $pass = "";
-    $dbname = "tst"; 
-    ```
+### 4. Deploy to GitHub
+1. Create a new repository on GitHub.
+2. Open terminal in this folder (`github_ready_version`).
+3. Initialize Git:
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   ```
+4. Push to GitHub:
+   ```bash
+   git branch -M main
+   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+   git push -u origin main
+   ```
+5. Go to your GitHub repository > **Settings** > **Pages**.
+6. Select `main` branch and `/ (root)` folder.
+7. Save. Your site will be live at `https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/`.
 
-5.  **Run the App**:
-    *   Open your browser and navigate to `http://localhost/your-project-folder/`.
+## Features
+- **Cross-Device Sync**: Log in on any device to see your tasks and notes.
+- **Tasks**: Add, edit, delete, and mark tasks as done.
+- **Notes**: Add and delete sticky notes.
+- **Profile**: Update your name and profile picture.
+- **Task History**: View your completed tasks.
 
-## 📂 Project Structure
-*   `index.php` - Main entry point.
-*   `dashboard.php` - User dashboard (protected).
-*   `database.php` - Database connection settings.
-*   `todo_list.sql` - Database import file.
-
-## ✨ Features
-*   User Registration & Login.
-*   Create, Read, Update, Delete (CRUD) for Tasks and Notes.
-*   Profile Management.
+## Technologies
+- HTML5, CSS3
+- Vanilla JavaScript (ES6 Modules)
+- Firebase Auth, Firestore, Storage
