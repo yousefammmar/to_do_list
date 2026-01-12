@@ -43,29 +43,55 @@ const profileForm = document.getElementById('profileForm');
 // Auth State Observer
 try {
     onAuthStateChanged(auth, async (user) => {
-        if (user) {
-            console.log("User signed in:", user.uid);
+        const isGuest = localStorage.getItem('guest_mode') === 'true';
+
+        if (user || isGuest) {
+            console.log(isGuest ? "Guest access active" : "User signed in:", user?.uid);
             updateUIForAuth(true);
-            updateUserNameDisplay(user);
-            setupDashboardListeners(user);
-            setupTaskHistoryListeners(user);
-            setupProfileListeners(user);
-            if (window.location.pathname.includes('login.html') || window.location.pathname.includes('register.html')) {
-                window.location.href = 'dashboard.html';
+
+            if (user) {
+                updateUserNameDisplay(user);
+                setupDashboardListeners(user);
+                setupTaskHistoryListeners(user);
+                setupProfileListeners(user);
+            } else {
+                if (userNameDisplay) userNameDisplay.textContent = "Guest User (Preview)";
+            }
+
+            // Redirect from auth pages
+            if (window.location.pathname.endsWith('login.html') || window.location.pathname.endsWith('register.html') || window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) {
+                // If on home/auth pages and logged in/guest, go to dashboard
+                if (!window.location.pathname.includes('dashboard.html')) {
+                    window.location.href = 'dashboard.html';
+                }
             }
         } else {
             console.log("User signed out");
             updateUIForAuth(false);
-            if (window.location.pathname.includes('dashboard.html') ||
-                window.location.pathname.includes('profile.html') ||
-                window.location.pathname.includes('task_history.html')) {
+
+            // Redirect protected pages
+            const protectedPages = ['dashboard.html', 'profile.html', 'task_history.html'];
+            const isProtected = protectedPages.some(page => window.location.pathname.endsWith(page));
+
+            if (isProtected) {
                 window.location.href = 'login.html';
             }
         }
     });
 } catch (error) {
     console.error("Firebase init error:", error);
+    // Even if Firebase fails, allow guest mode check
+    if (localStorage.getItem('guest_mode') === 'true') {
+        updateUIForAuth(true);
+        if (userNameDisplay) userNameDisplay.textContent = "Guest User (Preview)";
+    }
 }
+
+// Global Guest Login helper
+window.enterGuestMode = () => {
+    localStorage.setItem('guest_mode', 'true');
+    window.location.href = 'dashboard.html';
+};
 
 function updateUserNameDisplay(user) {
     if (userNameDisplay) {
@@ -118,7 +144,12 @@ if (registerForm) {
 
 logoutBtns.forEach(btn => {
     btn.addEventListener('click', async () => {
-        await signOut(auth);
+        localStorage.removeItem('guest_mode');
+        try {
+            await signOut(auth);
+        } catch (e) {
+            console.log("Sign out (guest or error):", e.message);
+        }
         window.location.href = 'index.html';
     });
 });

@@ -37,10 +37,11 @@
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" required>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">Login</button>
-                    <div id="loading-indicator" style="display:none; text-align:center; margin-top:10px;">Logging in...
-                    </div>
                 </form>
+                <div class="mt-3 text-center">
+                    <button onclick="window.enterGuestMode()" class="btn btn-secondary w-100"
+                        style="background: rgba(255,255,255,0.05);">Try as Guest (Preview Mode)</button>
+                </div>
                 <p class="mt-3 text-center">Don't have an account? <a href="register.html">Register here</a></p>
                 <div id="auth-error-message" class="alert alert-danger mt-3" role="alert" style="display:none;"></div>
             </div>
