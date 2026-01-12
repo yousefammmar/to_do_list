@@ -12,9 +12,23 @@ const firebaseConfig = {
     appId: "YOUR_APP_ID"
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-const storage = getStorage(app);
+const isPlaceholder = firebaseConfig.apiKey.includes("YOUR_API_KEY");
+
+let auth = null;
+let db = null;
+let storage = null;
+
+if (!isPlaceholder) {
+    try {
+        const app = initializeApp(firebaseConfig);
+        auth = getAuth(app);
+        db = getFirestore(app);
+        storage = getStorage(app);
+    } catch (e) {
+        console.error("Firebase Initialization Error:", e);
+    }
+} else {
+    console.warn("Firebase is using placeholder keys. Functions like Login/Register will not work until real keys are added to firebase-config.js.");
+}
 
 export { auth, db, storage };
