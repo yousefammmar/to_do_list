@@ -19,40 +19,33 @@
     </div>
     <header>
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-            <h1 style="margin: 0; flex: 1;">Create Your Account</h1>
-            <a href="about.html" class="btn btn-secondary" style="margin-left: auto;" aria-label="About our team">About
-                Us</a>
+            <h1 style="margin: 0; flex: 1;">Create An Account</h1>
+            <a href="index.html" class="btn btn-secondary" style="margin-left: auto;">Home</a>
         </div>
     </header>
 
     <main>
         <div class="container">
-            <div class="form-container-in">
+            <div class="form-container">
                 <h2>Register</h2>
-                <form id="register-form" novalidate>
+                <form id="register-form">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required aria-required="true"
-                            aria-label="Enter your full name">
+                        <input type="text" class="form-control" id="name" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required aria-required="true"
-                            aria-label="Enter your email address">
+                        <input type="email" class="form-control" id="email" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required
-                            aria-required="true" aria-label="Enter your password (minimum 6 characters)">
+                        <input type="password" class="form-control" id="password" required minlength="6">
                     </div>
-                    <button type="submit" class="btn btn-primary w-100"
-                        aria-label="Submit registration form">Register</button>
-                    <!-- Loading indicator -->
-                    <div id="loading-indicator" style="display:none; text-align:center; margin-top:10px;">Creating
-                        account...</div>
+                    <button type="submit" class="btn btn-primary w-100">Register</button>
+                    <div id="loading-indicator" style="display:none; text-align:center; margin-top:10px;">Registering...
+                    </div>
                 </form>
                 <p class="mt-3 text-center">Already have an account? <a href="login.html">Login here</a></p>
-
                 <div id="auth-error-message" class="alert alert-danger mt-3" role="alert" style="display:none;"></div>
             </div>
         </div>
@@ -62,7 +55,6 @@
         <p>&copy; 2024 To-Do & Notes Manager. All rights reserved.</p>
     </footer>
 
-    <!-- Firebase Configuration and App Logic -->
     <script type="module" src="firebase-config.js"></script>
     <script type="module" src="app.js"></script>
 </body>

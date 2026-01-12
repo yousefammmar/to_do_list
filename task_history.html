@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task History - Completed Tasks</title>
+    <title>Task History</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -20,14 +20,13 @@
     <header>
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
             <h1 style="margin: 0; flex: 1;">Task History</h1>
-            <a href="about.html" class="btn btn-secondary" style="margin-left: auto; margin-right: 0.5rem;"
-                aria-label="About our team">About Us</a>
+            <a href="about.html" class="btn btn-secondary" style="margin-right: 0.5rem;">About Us</a>
         </div>
         <nav>
-            <a href="index.html" class="btn btn-primary" aria-label="Go to homepage">Home</a>
-            <a href="dashboard.html" class="btn btn-primary" aria-label="Go back to dashboard">Dashboard</a>
-            <a href="profile.html" class="btn btn-info" aria-label="Go to profile page">Profile</a>
-            <button id="logout-btn-history" class="btn btn-danger" aria-label="Logout from your account">Logout</button>
+            <a href="index.html" class="btn btn-primary">Home</a>
+            <a href="dashboard.html" class="btn btn-primary">Dashboard</a>
+            <a href="profile.html" class="btn btn-info">Profile</a>
+            <button id="logout-btn-hist" class="btn btn-danger">Logout</button>
         </nav>
     </header>
 
@@ -35,9 +34,6 @@
         <div class="container">
             <div class="task-history-section">
                 <h2>Completed Tasks</h2>
-                <p>Here are all your completed tasks.</p>
-
-                <!-- Completed Tasks List injected by app.js -->
                 <ul class="task-list" id="completedTasksList">
                     <li class="placeholder">Loading completed tasks...</li>
                 </ul>
@@ -49,7 +45,6 @@
         <p>&copy; 2024 To-Do & Notes Manager. All rights reserved.</p>
     </footer>
 
-    <!-- Firebase Configuration and App Logic -->
     <script type="module" src="firebase-config.js"></script>
     <script type="module" src="app.js"></script>
 </body>

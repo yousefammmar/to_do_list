@@ -20,18 +20,14 @@
     <header>
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
             <h1 style="margin:0; flex:1;">About Our Team</h1>
-            <!-- Nav handled by app.js based on auth state -->
             <nav id="nav-container">
-                <a href="index.html" class="btn btn-primary" aria-label="Go to homepage">Home</a>
+                <a href="index.html" class="btn btn-primary">Home</a>
 
-                <!-- Authenticated Links -->
                 <a href="dashboard.html" class="btn btn-primary auth-logged-in" style="display:none;">Dashboard</a>
                 <a href="task_history.html" class="btn btn-info auth-logged-in" style="display:none;">Task History</a>
                 <a href="profile.html" class="btn btn-warning auth-logged-in" style="display:none;">Profile</a>
-                <button id="logout-btn-about" class="btn btn-danger auth-logged-in"
-                    style="display:none;">Logout</button>
+                <button id="logout-btn-nav" class="btn btn-danger auth-logged-in" style="display:none;">Logout</button>
 
-                <!-- Non-Authenticated Links -->
                 <a href="login.html" class="btn btn-info auth-logged-out" style="display:none;">Login</a>
                 <a href="register.html" class="btn btn-warning auth-logged-out" style="display:none;">Register</a>
             </nav>
@@ -42,59 +38,34 @@
         <div class="container">
             <div class="about-section">
                 <h2>Meet Our Development Team</h2>
-                <p class="team-intro">We are a team of dedicated developers who built this To-Do & Notes Manager
-                    application.</p>
-
                 <div class="team-grid">
-
                     <div class="team-member">
                         <div class="team-member-image-container">
-                            <img src="team_images/Tasneem.jpeg" alt="Tasneem Ahmad" class="team-member-image">
+                            <img src="team_images/Tasneem.jpeg" alt="Tasneem" class="team-member-image">
                         </div>
-                        <h3 class="team-member-name"><a href="https://yousefammmar.github.io/Tasneem"><strong>Tasneem
-                                    Ahmad</strong></a></h3>
-                        <p class="team-member-bio">
-                            Tasneem handled the JavaScript functionality of the project, focusing on interactivity and
-                            user experience, with strong skills in JavaScript and frontend development.
-                        </p>
+                        <h3 class="team-member-name">Tasneem Ahmad</h3>
+                        <p class="team-member-bio">Focused on interactivity and user experience.</p>
                     </div>
-
-
                     <div class="team-member">
                         <div class="team-member-image-container">
-                            <img src="team_images/Yousef.png" alt="Yousef Odeh" class="team-member-image">
+                            <img src="team_images/Yousef.png" alt="Yousef" class="team-member-image">
                         </div>
-                        <h3 class="team-member-name"><strong><a href="https://yousefammmar.github.io/yousef/">Yousef
-                                    Odeh</a></strong></h3>
-                        <p class="team-member-bio">
-                            Yousef handled the database design and authentication functionality of the project, focusing
-                            on data management, security, and reliable system access.
-                        </p>
+                        <h3 class="team-member-name">Yousef Odeh</h3>
+                        <p class="team-member-bio">Focused on data management and security.</p>
                     </div>
-
-
                     <div class="team-member">
                         <div class="team-member-image-container">
-                            <img src="team_images/Fatema.jpeg" alt="Fatema Alahmad" class="team-member-image">
+                            <img src="team_images/Fatema.jpeg" alt="Fatema" class="team-member-image">
                         </div>
-                        <h3 class="team-member-name"><strong>Fatema Alahmad</strong></h3>
-                        <p class="team-member-bio">
-                            Fatema Alahmad handled the HTML and CSS part of the project, focusing on page structure,
-                            layout, and responsive design.
-                        </p>
+                        <h3 class="team-member-name">Fatema Alahmad</h3>
+                        <p class="team-member-bio">Focused on structural layout and responsive design.</p>
                     </div>
-
-
                     <div class="team-member">
                         <div class="team-member-image-container">
-                            <img src="team_images/Ameen.png" alt="Ameen Alrawabdeh" class="team-member-image">
+                            <img src="team_images/Ameen.png" alt="Ameen" class="team-member-image">
                         </div>
-                        <h3 class="team-member-name"><strong><a href='https://yousefammmar.github.io/Ameen'> Ameen
-                                    Alrawabdeh</strong></a></h3>
-                        <p class="team-member-bio">
-                            Ameen handled the PHP part of the project, focusing on server-side logic, data handling, and
-                            backend functionality.
-                        </p>
+                        <h3 class="team-member-name">Ameen Alrawabdeh</h3>
+                        <p class="team-member-bio">Focused on logic and backend integration.</p>
                     </div>
                 </div>
             </div>
@@ -105,7 +76,6 @@
         <p>&copy; 2024 To-Do & Notes Manager. All rights reserved.</p>
     </footer>
 
-    <!-- Firebase Configuration and App Logic -->
     <script type="module" src="firebase-config.js"></script>
     <script type="module" src="app.js"></script>
 </body>

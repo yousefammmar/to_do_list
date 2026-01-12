@@ -25,6 +25,7 @@
                 <a href="about.html" class="btn btn-secondary" aria-label="About our team">About Us</a>
 
                 <div id="auth-buttons" style="display: flex; gap: 0.5rem; align-items: center;">
+                    <!-- Standard anchors for better compatibility -->
                     <a href="login.html" class="btn btn-sm btn-primary auth-logged-out">Login</a>
                     <a href="register.html" class="btn btn-sm btn-secondary auth-logged-out">Register</a>
 
@@ -50,7 +51,6 @@
                             delete them, and sync all your data into a secure database.</p>
                     </div>
                     <div class="buttons" id="main-auth-buttons">
-                        <!-- Content managed by app.js -->
                         <a href="login.html" class="btn login auth-logged-out">Login</a>
                         <a href="register.html" class="btn register auth-logged-out">Register</a>
 
@@ -62,19 +62,16 @@
                 </div>
             </div>
             <div class="right" role="img" aria-label="To-do list illustration">
-                <img src="landing_productivity.png" alt="To-do list illustration showing task management"
+                <img src="landing_productivity.png" alt="To-do list illustration"
                     style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.3);">
             </div>
         </div>
     </main>
 
-    <!-- bottom section moved out of left column -->
-    <div class="buttom reveal" aria-labelledby="social-proof-heading">
+    <div class="buttom reveal">
         <div class="social-proof-inner">
-            <h3 id="social-proof-heading" style="color:#0d6efd; margin-bottom:0.5rem;">Why people love To‑Do & Notes
-                Manager</h3>
-            <p style="color:#495057; margin-bottom:1rem;">Trusted by thousands to stay productive — average users report
-                finishing more tasks and saving time every week.</p>
+            <h3 style="color:#0d6efd; margin-bottom:0.5rem;">Why people love To‑Do & Notes Manager</h3>
+            <p style="color:#495057; margin-bottom:1rem;">Trusted by thousands to stay productive.</p>
 
             <div class="stats-grid" style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
                 <div class="stats-card">
@@ -89,16 +86,6 @@
                     <div class="stats-number">4.8 / 5</div>
                     <div class="stats-label">Average rating</div>
                 </div>
-                <div class="stats-card">
-                    <div class="stats-number">~2.3h</div>
-                    <div class="stats-label">Saved / week (avg)</div>
-                </div>
-            </div>
-
-            <div class="testimonials" style="display:flex; gap:1rem; flex-direction:column;">
-                <blockquote>“Best productivity boost I've found — I get more done in less time.” — A. Morgan
-                </blockquote>
-                <blockquote>“Simple, fast, and reliable. Perfect for personal and work tasks.” — J. Patel</blockquote>
             </div>
         </div>
     </div>
@@ -108,13 +95,8 @@
     </footer>
 
     <script>
-        // reveal on scroll for elements with .reveal
         document.addEventListener('DOMContentLoaded', function () {
-            const options = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15
-            };
+            const options = { threshold: 0.15 };
             const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -126,8 +108,6 @@
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         });
     </script>
-
-    <!-- Firebase App (the core Firebase SDK) -->
     <script type="module" src="firebase-config.js"></script>
     <script type="module" src="app.js"></script>
 </body>
