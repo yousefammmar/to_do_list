@@ -1,0 +1,127 @@
+<?php
+// Allow logged-in users to access the home page
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do & Notes Manager - Welcome</title>
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
+</head>
+
+<body>
+    <div class="background-particles">
+        <div class="particle p1"></div>
+        <div class="particle p2"></div>
+        <div class="particle p3"></div>
+        <div class="particle p4"></div>
+        <div class="particle p5"></div>
+        <div class="particle p6"></div>
+    </div>
+    <header>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+            <h1 style="margin:0; flex:1;">Welcome to To-Do & Notes Manager</h1>
+
+            <div style="display:flex; gap:0.5rem; align-items:center;">
+                <a href="about.php" class="btn btn-secondary" aria-label="About our team">About Us</a>
+
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <a href="dashboard.php" class="btn btn-sm btn-primary" style="margin-left:0.5rem;">Dashboard</a>
+                    <a href="logout.php" class="btn btn-sm btn-secondary" style="margin-left:0.5rem;">Logout</a>
+                <?php else: ?>
+                    <a href="login.php" class="btn btn-sm btn-primary" style="margin-left:0.5rem;">Login</a>
+                    <a href="register.php" class="btn btn-sm btn-secondary" style="margin-left:0.5rem;">Register</a>
+                <?php endif; ?>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container two-column">
+            <div class="left">
+                <div class="main-content">
+                    <div class="intro">
+                        <h2>Manage Your Tasks & Notes</h2>
+                        <h3>Stay organized and productive</h3>
+                        <p>Our easy-to-use system helps you manage your tasks and notes efficiently. Keep track of what needs to be done, add quick notes, and never miss a deadline again.</p>
+                        <p>Create your personal account, log in, add tasks or notes, mark tasks as completed, edit or delete them, and sync all your data into a secure database.</p>
+                    </div>
+                    <div class="buttons">
+                        <?php if (isset($_SESSION['user_id'])): ?>
+                            <a href="dashboard.php" class="btn login" aria-label="Go to dashboard">Go to Dashboard</a>
+                            <a href="logout.php" class="btn register" aria-label="Logout">Logout</a>
+                        <?php else: ?>
+                            <a href="login.php" class="btn login" aria-label="Go to login page">Login</a>
+                            <a href="register.php" class="btn register" aria-label="Go to registration page">Register</a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+            <div class="right" role="img" aria-label="To-do list illustration">
+                <img src="landing_productivity.png" alt="To-do list illustration showing task management" style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.3);">
+            </div>
+        </div>
+    </main>
+
+    <!-- bottom section moved out of left column -->
+    <div class="buttom reveal" aria-labelledby="social-proof-heading">
+        <div class="social-proof-inner">
+            <h3 id="social-proof-heading" style="color:#0d6efd; margin-bottom:0.5rem;">Why people love To‑Do & Notes Manager</h3>
+            <p style="color:#495057; margin-bottom:1rem;">Trusted by thousands to stay productive — average users report finishing more tasks and saving time every week.</p>
+
+            <div class="stats-grid" style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
+                <div class="stats-card">
+                    <div class="stats-number">120,482+</div>
+                    <div class="stats-label">Active users</div>
+                </div>
+                <div class="stats-card">
+                    <div class="stats-number">1,254,318</div>
+                    <div class="stats-label">Tasks completed</div>
+                </div>
+                <div class="stats-card">
+                    <div class="stats-number">4.8 / 5</div>
+                    <div class="stats-label">Average rating</div>
+                </div>
+                <div class="stats-card">
+                    <div class="stats-number">~2.3h</div>
+                    <div class="stats-label">Saved / week (avg)</div>
+                </div>
+            </div>
+
+            <div class="testimonials" style="display:flex; gap:1rem; flex-direction:column;">
+                <blockquote>“Best productivity boost I've found — I get more done in less time.” — A. Morgan</blockquote>
+                <blockquote>“Simple, fast, and reliable. Perfect for personal and work tasks.” — J. Patel</blockquote>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; <?php echo date('Y'); ?> To-Do & Notes Manager. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // reveal on scroll for elements with .reveal
+        document.addEventListener('DOMContentLoaded', function() {
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, options);
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+
+</html>
