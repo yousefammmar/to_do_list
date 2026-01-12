@@ -24,17 +24,14 @@
             <div style="display:flex; gap:0.5rem; align-items:center;">
                 <a href="about.html" class="btn btn-secondary" aria-label="About our team">About Us</a>
 
-                <div id="auth-buttons" style="display: contents;">
-                    <!-- Content injected by app.js based on auth state -->
-                    <a href="login.html" class="btn btn-sm btn-primary auth-logged-out"
-                        style="margin-left:0.5rem;">Login</a>
-                    <a href="register.html" class="btn btn-sm btn-secondary auth-logged-out"
-                        style="margin-left:0.5rem;">Register</a>
+                <div id="auth-buttons" style="display: flex; gap: 0.5rem; align-items: center;">
+                    <a href="login.html" class="btn btn-sm btn-primary auth-logged-out">Login</a>
+                    <a href="register.html" class="btn btn-sm btn-secondary auth-logged-out">Register</a>
 
                     <a href="dashboard.html" class="btn btn-sm btn-primary auth-logged-in"
-                        style="margin-left:0.5rem; display:none;">Dashboard</a>
+                        style="display:none;">Dashboard</a>
                     <button id="logout-btn" class="btn btn-sm btn-secondary auth-logged-in"
-                        style="margin-left:0.5rem; display:none;">Logout</button>
+                        style="display:none;">Logout</button>
                 </div>
             </div>
         </div>
@@ -54,13 +51,12 @@
                     </div>
                     <div class="buttons" id="main-auth-buttons">
                         <!-- Content managed by app.js -->
-                        <a href="login.html" class="btn login auth-logged-out" aria-label="Go to login page">Login</a>
-                        <a href="register.html" class="btn register auth-logged-out"
-                            aria-label="Go to registration page">Register</a>
+                        <a href="login.html" class="btn login auth-logged-out">Login</a>
+                        <a href="register.html" class="btn register auth-logged-out">Register</a>
 
-                        <a href="dashboard.html" class="btn login auth-logged-in" aria-label="Go to dashboard"
-                            style="display:none;">Go to Dashboard</a>
-                        <button id="logout-btn-main" class="btn register auth-logged-in" aria-label="Logout"
+                        <a href="dashboard.html" class="btn login auth-logged-in" style="display:none;">Go to
+                            Dashboard</a>
+                        <button id="logout-btn-main" class="btn register auth-logged-in"
                             style="display:none;">Logout</button>
                     </div>
                 </div>
